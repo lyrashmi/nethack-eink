@@ -20,3 +20,28 @@ A high-contrast light-mode port of **NetHack 5.0.0** for Android e-ink devices (
    ```bash
    git clone [https://github.com/lyrashmi/nethack-eink.git](https://github.com/lyrashmi/nethack-eink.git)
    git clone [https://github.com/lyrashmi/forkfront-android.git](https://github.com/lyrashmi/forkfront-android.git)
+   ```
+2. Provision the Android NDK (`r21e` or compatible) and compile the native NetHack C core and Lua runtime:
+   ```bash
+   cd nethack-eink/sys/android
+   sh ./setup.sh
+   cd ../..
+   make install
+   ```
+3. Assemble the debug APK using JDK 21:
+   ```bash
+   cd sys/android
+   ./gradlew assembleDebug
+   ```
+   The compiled ARM64 APK is output to `sys/android/app/build/outputs/apk/debug/app-arm64-v8a-debug.apk`.
+
+## Installation via ADB
+
+```bash
+adb install -r sys/android/app/build/outputs/apk/debug/app-arm64-v8a-debug.apk
+```
+
+## Credits & Upstream Projects
+
+- [NetHack](https://www.nethack.org/) — The NetHack DevTeam
+- [NetHack-Android](https://github.com/JodiJodington/NetHack-Android) & [ForkFront-Android](https://github.com/JodiJodington/ForkFront-Android) — Gurr & JodiJodington
