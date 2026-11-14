@@ -9,7 +9,7 @@
 		android:label="NetHack 5"
 		android:icon="@drawable/icon"
 		android:largeHeap="true"
-		android:theme="@android:style/Theme"
+		android:theme="@style/Theme.EInk"
 		android:allowBackup="true">
 		<activity
 			android:name="com.tbd.forkfront.ForkFront"

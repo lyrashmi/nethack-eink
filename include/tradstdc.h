@@ -457,7 +457,7 @@ typedef genericptr genericptr_t; /* (void *) or (char *) */
 #if defined(__clang__)
 #ifndef FALLTHROUGH
 #if defined(__clang_major__)
-#if __clang_major__ >= 9
+#if __clang_major__ >= 9 && !defined(ANDROID)
 #define FALLTHROUGH __attribute__((fallthrough))
 /* #warning FALLTHROUGH __attribute__((fallthrough)) from clang */
 #endif  /* __clang_major__ greater than or equal to 9 */

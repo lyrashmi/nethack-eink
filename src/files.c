@@ -2100,7 +2100,6 @@ problematic_savefile(int sfstatus, const char *savefilenm)
     case SF_DM_ILP32LL64_ON_IL32LLP64:
     case SF_DM_I32LP64_ON_IL32LLP64:
     case SF_DM_IL32LLP64_ON_I32LP64:
-        FALLTHROUGH;
         /*FALLTHRU*/
     case SF_DM_MISMATCH:
     case SF_OUTDATED:
