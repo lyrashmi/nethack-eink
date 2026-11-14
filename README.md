@@ -1,6 +1,6 @@
 # NetHack E-Ink
 
-A high-contrast light-mode port of **NetHack 3.7** for Android e-ink devices (such as the Ratta Supernote), built on [NetHack-Android](https://github.com/JodiJodington/NetHack-Android) and a customised [ForkFront-Android](https://github.com/lyrashmi/forkfront-android) frontend.
+A high-contrast light-mode port of **NetHack 5.0.0** for Android e-ink devices (such as the Ratta Supernote), built on [NetHack-Android](https://github.com/JodiJodington/NetHack-Android) and a customised [ForkFront-Android](https://github.com/lyrashmi/forkfront-android) frontend.
 
 ## Key Features
 
