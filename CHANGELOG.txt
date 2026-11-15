@@ -1,3 +1,28 @@
-- A README was added to this repo and I would highly encourage all you to read it! (The old Nethack README is now under 'OLDREADME')
-- Fixed status effects not showing
-- Merged upstream changes, including some of my improvements to the menu that pops up when you click on the hero.
+* Pure White Light Theme: Replaced all dark-mode aesthetics with a high-contrast palette featuring a pure white (`#FFFFFF`) canvas and crisp black (`#000000`) text, walls, and solid `1dp`–`2dp` borders.
+* 16-Colour E-Ink ANSI Palette: Remapped all `CLR_*` entries in `winandroid.c` and `defaults.nh` to deep, saturated tones (>= 6.8:1 contrast against white) optimised for monochrome Carta e-paper without muddy grayscale dithering.
+* Zero-Animation Instant Inversion: Eliminated Android ripples, shadows, and translucent scrims in favour of binary black/white state changes to prevent ghosting and full-screen refresh flashes.
+* Refined 3px App Launcher Icon: Custom vector icon and multi-density raster assets (`mdpi` through `xxhdpi`) rendered with a clean 3px stroke width on a pure white background.
+* Graphical Tileset Overhaul (`Default`, `Geoduck`, `Nevada`): Processed all sprite sheets to convert outer unexplored void space, stone tiles, and room/corridor floor backgrounds to pure `#FFFFFF`, while preserving crisp dark floor dots (`#282828`) and wall outlines.
+* Hardware-Keyless Navigation:
+  * Tap anywhere outside active menus, questions, or tooltips to dismiss them instantly.
+  * Native C sub-menu loop (`invent.c` / `iactions.c`) so backing out of item actions returns directly to the open inventory list.
+  * Persistent `[ Back ]` header buttons across single-select menus and nested Settings screens.
+* Uniform 39-Button Command Grid: Replaced horizontal swipe scrolling with a deterministic multi-row `FlowLayout` grid so all 39 primary commands remain visible simultaneously.
+* Collapsible Movement Numpad (`DPadOverlay`):
+  * Anchored at the bottom-right above the command panel with a persistent toggle tab (`[ ▲ D-Pad ]` / `[ ▼ D-Pad ]`) that expands upward without shifting screen coordinates.
+  * Automatically pops up when NetHack prompts for a direction (`^d`, `z`, `t`) and collapses upon completion.
+* 5dp Bezel Safe-Area Inset: Added safe-area padding across main windows and Settings dialogs to prevent the physical tablet bezel from clipping outer UI elements.
+* Native `#loot` Integration: Added the `M-l` command button directly after `,` (pickup) with automated preference migration (`forceAddLoot`).
+* Instant Page-Switching Pager Bars:
+  * Suppressed kinetic touch-drag scrolling across all menus, text windows, help screens, and settings to eliminate e-ink ghosting and drag lag.
+  * Added discrete `[ ◄ Prev ]` and `[ Next ► ]` buttons with a `Page X/Y` indicator that jumps instantaneously by full viewport height per tap.
+* Stationary Camera Default (`cameraAutoFollow = false`):
+  * The map remains stationary while walking within the screen (with a 2-tile margin), shifting only when approaching viewport boundaries or teleporting.
+  * Manual touch drag panning and pinch zooming (`canPan()`) remain fully supported anywhere on the canvas.
+* Initial Map Scaling: Set default initial zoom to 1.5x on fresh installations for immediate readability.
+* 7-Line Rolling Message Log: Expanded the top message bar to a fixed 7-line height (`SHOW_MAX_LINES = 7`) showing recent game history without shifting the dungeon canvas vertically.
+* In-Game Save Support (`[ Save Current Game ]`):
+  * Added a dedicated `[ Save Current Game ]` button in the Settings header that flushes and checkpoints the full game state to disk (`nhState.saveState()`) without exiting the application.
+  * Displays a clean e-ink modal confirmation dialog (`"Game has been saved."`) with an `[ OK ]` button.
+* Background Checkpoint Protection: Automatically checkpoints state to disk during `onPause()`, protecting progress against system Force Stops (`SIGKILL`).
+* Exitable Virtual Keyboard: Added a visible `[ Close ▼ ]` header button to the `...` virtual keyboard and enabled outside-tap dismissal to prevent interface traps.
