@@ -4,15 +4,13 @@ A high-contrast light-mode port of **NetHack 5.0.0** for Android e-ink devices (
 
 ## Key Features
 
-- **High-Contrast E-Ink Light Theme**: Pure white (`#FFFFFF`) canvas and UI chrome with crisp black (`#000000`) text, walls, and `1dp`–`2dp` solid borders.
-- **16-Colour E-Ink ANSI Palette**: Remapped all `CLR_*` entries in `winandroid.c` and `defaults.nh` to deep, high-contrast tones ($\ge 6.8:1$ contrast against white) that remain sharp on monochrome Carta e-paper without muddy grayscale dithering.
-- **Zero-Animation Instant Inversion**: Replaced Android ripples, shadows, and translucent scrims with binary black/white state selectors to eliminate ghosting and full-screen refresh flashes.
-- **Navigation Without Hardware Keys**:
-  - Tap anywhere outside menus, questions, or tooltips to dismiss them.
-  - Native C sub-menu loop (`invent.c` / `iactions.c`) so backing out of item actions returns directly to the open inventory list.
-  - Persistent `[ Back ]` header buttons across single-select menus and nested Settings screens, plus an explicit `ESC` button on the command grid.
-- **Uniform Multi-Row Command Grid**: Replaced horizontal scrolling with a deterministic fixed-column grid (`FlowLayout`) so all commands remain visible simultaneously, including `ESC` and `M-l` (loot), alongside a collapsible directional movement pad.
-- **150% UI Scaling & Safe-Area Padding**: Scaled UI controls and typography for larger e-paper screens with `5dp` bezel safe-area padding.
+- **E-Ink First Light Theme**: Renders the dungeon canvas, menus, and UI chrome on a pure white (`#FFFFFF`) background with crisp black (`#000000`) text, walls, and solid borders for maximum readability without glare.
+- **High-Contrast 16-Colour Palette & Tilesets**: Calibrates every ANSI colour and graphical tileset (`Default`, `Geoduck`, `Nevada`) to high-contrast tones on white backgrounds, eliminating muddy grayscale dithering on monochrome e-paper displays.
+- **Ghost-Free UI & Instant Paging**: Removes ripples, shadows, animations, and kinetic drag-scrolling in favour of binary black/white selection states and instant `[ ◄ Prev ]` / `[ Next ► ]` page jumps.
+- **Touch & Stylus Navigation**: Dismisses menus, prompts, and tooltips by tapping outside them, keeps your inventory open when backing out of item actions, and includes dedicated `[ Back ]` headers for devices without Android navigation buttons.
+- **Static Command Grid & Auto-Opening D-Pad**: Displays all primary commands simultaneously in a fixed multi-row grid (including `ESC` and `#loot`), paired with a collapsible directional numpad and double-tap auto-travel.
+- **Large-Screen Ergonomics & Safe-Area Margins**: Scales typography, map zoom, and touch targets for 10-inch e-paper tablets with `5dp` bezel padding, a 7-line rolling message log, and a stationary camera option.
+- **In-Game Save & Background Checkpointing**: Includes a dedicated `[ Save Current Game ]` button in Settings alongside automatic background state checkpointing to protect progress against system force-stops.
 
 ## Building from Source
 
