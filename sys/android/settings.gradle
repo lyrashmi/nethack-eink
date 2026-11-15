@@ -1,8 +1,22 @@
 include(':app')
 rootProject.name = 'NetHack-Android'
 
-includeBuild('/home/vivien/src/forkfront-android') {
-  dependencySubstitution {
-    substitute module('com.tbd.forkfront:lib') using project(':lib')
+def forkFrontDir = [
+    file('../../forkfront-android'),
+    file('../../../forkfront-android'),
+    file('/home/vivien/src/forkfront-android')
+].find { it != null && it.exists() }
+
+if (forkFrontDir != null) {
+  includeBuild(forkFrontDir) {
+    dependencySubstitution {
+      substitute module('com.tbd.forkfront:lib') using project(':lib')
+    }
+  }
+} else {
+  sourceControl {
+    gitRepository("https://github.com/lyrashmi/forkfront-android.git") {
+      producesModule("com.tbd.forkfront:lib")
+    }
   }
 }
