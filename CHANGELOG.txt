@@ -16,8 +16,10 @@
 * Instant Page-Switching Pager Bars:
   * Suppressed kinetic touch-drag scrolling across all menus, text windows, help screens, and settings to eliminate e-ink ghosting and drag lag.
   * Added discrete `[ ◄ Prev ]` and `[ Next ► ]` buttons with a `Page X/Y` indicator that jumps instantaneously by full viewport height per tap.
+  * Stateful Page Number Tracking: Fixed bottom-boundary integer floor calculation in `EInkPager` so advancing to subsequent pages immediately and accurately updates the label (e.g. `"Page 2/2"`) and button states with zero lag.
 * Stationary Camera Default (`cameraAutoFollow = false`):
   * The map remains stationary while walking within the screen (with a 2-tile margin), shifting only when approaching viewport boundaries or teleporting.
+  * Non-Snapping Incremental Viewport Shifts: Dynamically offsets `mViewOffset` using relative deltas (`dx`, `dy`) and boundary clamping when approaching screen margins, preserving manual touch-panning positions and pinch-zoom state without jarring camera resets.
   * Manual touch drag panning and pinch zooming (`canPan()`) remain fully supported anywhere on the canvas.
 * Initial Map Scaling: Set default initial zoom to 1.5x on fresh installations for immediate readability.
 * 7-Line Rolling Message Log: Expanded the top message bar to a fixed 7-line height (`SHOW_MAX_LINES = 7`) showing recent game history without shifting the dungeon canvas vertically.
@@ -26,3 +28,4 @@
   * Displays a clean e-ink modal confirmation dialog (`"Game has been saved."`) with an `[ OK ]` button.
 * Background Checkpoint Protection: Automatically checkpoints state to disk during `onPause()`, protecting progress against system Force Stops (`SIGKILL`).
 * Exitable Virtual Keyboard: Added a visible `[ Close ▼ ]` header button to the `...` virtual keyboard and enabled outside-tap dismissal to prevent interface traps.
+* Robust Multi-Platform CI Workflow: Resolved GitHub Actions package mirror errors via automated package index refreshes and enabled dynamic multi-repository library resolution for automated APK builds across all Android ABIs.
