@@ -713,12 +713,14 @@ itemactions(struct obj *otmp)
         free((genericptr_t) selected);
 
         itemactions_pushkeys(otmp, act);
+        destroy_nhwindow(win);
+        return ECMD_OK;
     }
     destroy_nhwindow(win);
 
-    /* finish the 'i' command:  no time elapses and cancelling without
-       selecting an action doesn't matter */
-    return ECMD_OK;
+    /* Cancelled item action sub-menu: return ECMD_CANCEL so dispinv_with_action
+       can re-display the parent inventory menu */
+    return ECMD_CANCEL;
 }
 
 /*iactions.c*/

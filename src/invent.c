@@ -3014,30 +3014,42 @@ dispinv_with_action(
     boolean menumode = (len != 1 || iflags.menu_requested) ? TRUE : FALSE,
             save_force_invmenu = iflags.force_invmenu;
 
-    if (use_inuse_ordering) {
-        save_accessories = inuse_headers[4];
-        save_sortloot = flags.sortloot;
+    for (;;) {
+        if (use_inuse_ordering) {
+            save_accessories = inuse_headers[4];
+            save_sortloot = flags.sortloot;
 
-        flags.sortloot = 'i'; /* checked by display_pickinv() */
-        if (alt_label)
-            inuse_headers[4] = alt_label;
-    }
-    iflags.force_invmenu = FALSE;
-
-    c = display_inventory(lets, menumode);
-
-    if (use_inuse_ordering) {
-        flags.sortloot = save_sortloot;
-        inuse_headers[4] = save_accessories;
-    }
-    iflags.force_invmenu = save_force_invmenu;
-
-    if (c && c != '\033') {
-        for (otmp = gi.invent; otmp; otmp = nextobj) {
-            nextobj = otmp->nobj;
-            if (otmp->invlet == c)
-                return itemactions(otmp);
+            flags.sortloot = 'i'; /* checked by display_pickinv() */
+            if (alt_label)
+                inuse_headers[4] = alt_label;
         }
+        iflags.force_invmenu = FALSE;
+
+        c = display_inventory(lets, menumode);
+
+        if (use_inuse_ordering) {
+            flags.sortloot = save_sortloot;
+            inuse_headers[4] = save_accessories;
+        }
+        iflags.force_invmenu = save_force_invmenu;
+
+        if (c && c != '\033') {
+            boolean found = FALSE;
+            for (otmp = gi.invent; otmp; otmp = nextobj) {
+                nextobj = otmp->nobj;
+                if (otmp->invlet == c) {
+                    int res = itemactions(otmp);
+                    if (res == ECMD_CANCEL) {
+                        found = TRUE;
+                        break;
+                    }
+                    return res;
+                }
+            }
+            if (found)
+                continue;
+        }
+        break;
     }
     return ECMD_OK;
 }
