@@ -12,6 +12,11 @@ A high-contrast light-mode port of **NetHack 5.0.0** for Android e-ink devices (
 - **Large-Screen Ergonomics & Safe-Area Margins**: Scales typography, map zoom, and touch targets for 10-inch e-paper tablets with `5dp` bezel padding, a 7-line rolling message log, and a stationary camera option.
 - **In-Game Save & Background Checkpointing**: Includes a dedicated `[ Save Current Game ]` button in Settings alongside automatic background state checkpointing to protect progress against system force-stops.
 
+## Release
+
+Grab the pre-built APK directly from [GitHub Releases](https://github.com/lyrashmi/nethack-eink/releases).
+
+
 ## Building from Source
 
 1. Clone both repositories side by side (as `settings.gradle` links to `../forkfront-android` via Gradle composite build):
