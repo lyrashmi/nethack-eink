@@ -4,7 +4,7 @@ A high-contrast light-mode port of **NetHack 5.0.0** for Android e-ink devices (
 
 ## Key Features
 
-- **E-Ink First Light Theme**: Renders the dungeon canvas, menus, and UI chrome on a pure white (`#FFFFFF`) background with crisp black (`#000000`) text, walls, and solid borders for maximum readability without glare.
+- **E-Ink First Light Theme**: Renders the dungeon canvas, menus, and UI chrome on a pure white (`#FFFFFF`) background with crisp black (`#000000`) text, walls, and solid borders for maximum readability without low-contrast grey washout.
 - **High-Contrast 16-Colour Palette & Tilesets**: Calibrates every ANSI colour and graphical tileset (`Default`, `Geoduck`, `Nevada`) to high-contrast tones on white backgrounds, eliminating muddy grayscale dithering on monochrome e-paper displays.
 - **Ghost-Free UI & Instant Paging**: Removes ripples, shadows, animations, and kinetic drag-scrolling in favour of binary black/white selection states and instant `[ ◄ Prev ]` / `[ Next ► ]` page jumps.
 - **Touch & Stylus Navigation**: Dismisses menus, prompts, and tooltips by tapping outside them, keeps your inventory open when backing out of item actions, and includes dedicated `[ Back ]` headers for devices without Android navigation buttons.
