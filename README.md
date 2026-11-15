@@ -14,7 +14,7 @@ A high-contrast light-mode port of **NetHack 5.0.0** for Android e-ink devices (
 
 ## Release
 
-Grab the pre-built APK directly from [GitHub Releases](https://github.com/lyrashmi/nethack-eink/releases).
+Grab the pre-built APK directly from [releases](https://github.com/lyrashmi/nethack-eink/releases).
 
 
 ## Building from Source
